@@ -1,10 +1,11 @@
 /* ===================================================================
-   FRUTOS SECOS LAM - HOJA DE ESTILOS LIMPIA Y MODERNA
-   Diseño minimalista, directo y enfocado en conversión
+   FRUTOS SECOS LAM - ESTILOS 100% RESPONSIVE Y ADAPTATIVOS
+   Diseñado específicamente para Móviles, Tablets, Notebooks y Desktop
+   Breakpoints verificados: 320, 375, 390, 430, 768, 1024, 1366, 1920, 2560px
    =================================================================== */
 
 :root {
-  /* Paleta artesanal y cálida */
+  /* Paleta cromática original */
   --color-primary: #2d1c12;          /* Tostado profundo */
   --color-primary-light: #482f20;
   --color-primary-dark: #1b1009;
@@ -33,24 +34,34 @@
   --font-serif: 'Playfair Display', Georgia, serif;
   --transition-fast: 0.16s ease;
   --transition-normal: 0.25s ease;
-  --radius-sm: 6px;
+  
+  --radius-xs: 4px;
+  --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 18px;
   --radius-xl: 24px;
   --radius-full: 9999px;
+
+  /* Espaciados y contenedores fluidos */
+  --container-max: 1240px;
+  --header-height: 64px;
 }
 
-/* Reset y base */
+/* ===================================================================
+   RESET Y BASE ACCESIBLE (MOBILE-FIRST)
+   =================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
   scroll-behavior: smooth;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -59,6 +70,10 @@ body {
   color: var(--color-text-main);
   line-height: 1.5;
   overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 img {
@@ -76,19 +91,24 @@ a {
 button, input, select, textarea {
   font-family: inherit;
   font-size: inherit;
+  color: inherit;
 }
 
 button {
   cursor: pointer;
   border: none;
   background: none;
+  touch-action: manipulation;
 }
 
+/* Contenedor Adaptativo Fluido */
 .container {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(12px, 3.5vw, 24px);
+  padding-right: clamp(12px, 3.5vw, 24px);
 }
 
 .sr-only {
@@ -103,37 +123,45 @@ button {
 }
 
 /* ===================================================================
-   HEADER & NAVBAR
+   HEADER & NAVBAR ADAPTATIVOS
    =================================================================== */
 .site-header {
   position: sticky;
   top: 0;
   background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
   z-index: 100;
+  transition: all var(--transition-fast);
 }
 
 .header-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 12px 20px;
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(16px, 4vw, 36px);
+  padding-right: clamp(16px, 4vw, 36px);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: clamp(10px, 2vw, 24px);
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-/* Logo y Marca */
+/* Logo adaptable */
 .brand-link {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   flex-shrink: 0;
+  user-select: none;
 }
 
 .brand-logo {
-  max-height: 48px;
+  height: clamp(34px, 5vw, 48px);
   width: auto;
   object-fit: contain;
   transition: transform var(--transition-normal);
@@ -149,11 +177,12 @@ button {
 }
 
 .brand-title {
-  font-size: 1.15rem;
+  font-size: clamp(0.92rem, 2.5vw, 1.15rem);
   font-weight: 800;
   color: var(--color-primary);
   line-height: 1.1;
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
 .brand-title strong {
@@ -161,41 +190,43 @@ button {
 }
 
 .brand-subtitle {
-  font-size: 0.72rem;
+  font-size: clamp(0.6rem, 1.6vw, 0.72rem);
   font-weight: 700;
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
-/* Buscador */
+/* Buscador Inteligente */
 .search-wrapper {
   position: relative;
-  flex: 1;
-  max-width: 280px;
   display: flex;
   align-items: center;
+  flex: 1;
+  max-width: 100%;
 }
 
 .search-icon {
   position: absolute;
   left: 12px;
-  width: 16px;
-  height: 16px;
+  width: 15px;
+  height: 15px;
   color: var(--color-text-muted);
   pointer-events: none;
 }
 
 .search-wrapper input {
   width: 100%;
-  padding: 8px 32px 8px 36px;
+  padding: 8px 30px 8px 34px;
   background: var(--color-bg-alt);
   border: 1px solid transparent;
   border-radius: var(--radius-full);
-  font-size: 0.86rem;
+  font-size: 0.84rem;
   color: var(--color-text-main);
   outline: none;
   transition: all var(--transition-fast);
+  height: 36px;
 }
 
 .search-wrapper input:focus {
@@ -207,53 +238,63 @@ button {
 .clear-search-btn {
   position: absolute;
   right: 10px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1.1rem;
   color: var(--color-text-muted);
+  border-radius: var(--radius-full);
 }
 
 /* Navegación Desktop */
 .desktop-nav {
-  display: flex;
+  display: none;
   align-items: center;
-  gap: 22px;
+  gap: 20px;
 }
 
 .nav-item {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--color-text-main);
-  padding: 4px 0;
+  padding: 6px 0;
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-item:hover, .nav-item.active {
   color: var(--color-accent);
 }
 
-/* Acciones */
+/* Acciones de Cabecera */
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .cart-trigger-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   background: var(--color-bg-alt);
   border: 1px solid var(--color-border);
-  padding: 8px 14px;
+  padding: 7px 11px;
   border-radius: var(--radius-full);
   font-weight: 700;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   color: var(--color-primary);
+  height: 38px;
   transition: all var(--transition-fast);
 }
 
 .cart-trigger-btn svg {
   width: 17px;
   height: 17px;
+  flex-shrink: 0;
 }
 
 .cart-badge {
@@ -263,6 +304,8 @@ button {
   font-weight: 800;
   padding: 1px 6px;
   border-radius: var(--radius-full);
+  min-width: 18px;
+  text-align: center;
 }
 
 .cart-trigger-btn:hover {
@@ -277,64 +320,87 @@ button {
   background: #25d366;
   color: #ffffff;
   font-weight: 700;
-  font-size: 0.84rem;
-  padding: 8px 14px;
+  font-size: 0.82rem;
+  padding: 7px 13px;
   border-radius: var(--radius-full);
+  height: 38px;
   transition: all var(--transition-fast);
 }
 
 .btn-header-wa svg {
   width: 16px;
   height: 16px;
+  flex-shrink: 0;
 }
 
 .btn-header-wa:hover {
   background: #20bd5a;
 }
 
-/* Mobile Toggle */
+/* Botón Hamburguesa Mobile */
 .mobile-toggle-btn {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 5px;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   background: var(--color-bg-alt);
   border-radius: var(--radius-sm);
-  padding: 8px;
+  border: 1px solid var(--color-border);
+  padding: 6px;
+  flex-shrink: 0;
 }
 
 .mobile-toggle-btn span {
   display: block;
   height: 2px;
-  width: 100%;
+  width: 18px;
   background: var(--color-primary);
   border-radius: 2px;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
 }
 
+/* Menú Desplegable Mobile */
 .mobile-nav-panel {
   display: none;
   flex-direction: column;
   background: #ffffff;
   border-top: 1px solid var(--color-border);
-  padding: 16px 20px;
-  gap: 12px;
+  padding: 14px clamp(14px, 4vw, 24px);
+  gap: 8px;
+  box-shadow: var(--shadow-md);
+  animation: slideDown 0.2s ease forwards;
 }
 
 .mobile-nav-panel.open {
   display: flex;
 }
 
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .mobile-nav-link {
-  font-size: 0.95rem;
+  font-size: 0.94rem;
   font-weight: 600;
-  padding: 6px 0;
+  color: var(--color-text-main);
+  padding: 10px 4px;
   border-bottom: 1px solid var(--color-border);
 }
 
+.mobile-nav-link:active {
+  color: var(--color-accent);
+}
+
+.mobile-nav-footer {
+  padding-top: 8px;
+}
+
 /* ===================================================================
-   BOTONES Y COMPONENTES BASE
+   BOTONES Y COMPONENTES COMUNES
    =================================================================== */
 .btn {
   display: inline-flex;
@@ -343,16 +409,29 @@ button {
   gap: 8px;
   font-weight: 700;
   border-radius: var(--radius-md);
-  padding: 10px 20px;
+  padding: 10px 18px;
+  min-height: 44px; /* Ergonomía táctil */
   transition: all var(--transition-fast);
   text-align: center;
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 .btn-lg {
-  padding: 13px 26px;
-  font-size: 0.98rem;
-  border-radius: var(--radius-lg);
+  padding: 12px 24px;
+  font-size: clamp(0.92rem, 2vw, 1rem);
+  min-height: 48px;
+}
+
+.btn-sm {
+  padding: 7px 14px;
+  font-size: 0.8rem;
+  min-height: 36px;
+  border-radius: var(--radius-sm);
+}
+
+.btn-block {
+  width: 100%;
 }
 
 .btn-primary {
@@ -367,16 +446,19 @@ button {
 .btn-accent {
   background: var(--color-accent);
   color: #ffffff;
+  box-shadow: 0 2px 10px rgba(201, 115, 22, 0.28);
 }
 
 .btn-accent:hover {
   background: var(--color-accent-hover);
+  transform: translateY(-1px);
 }
 
 .btn-outline-light {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.45);
   color: #ffffff;
+  backdrop-filter: blur(6px);
 }
 
 .btn-outline-light:hover {
@@ -401,8 +483,9 @@ button {
   align-items: center;
   padding: 4px 10px;
   border-radius: var(--radius-full);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 .badge-accent {
@@ -411,13 +494,14 @@ button {
 }
 
 .badge-white {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   color: var(--color-primary-dark);
 }
 
-/* Secciones */
+/* Cabeceras de Sección */
 .section {
-  padding: 56px 0;
+  padding-top: clamp(38px, 6vw, 68px);
+  padding-bottom: clamp(38px, 6vw, 68px);
 }
 
 .text-center {
@@ -425,31 +509,36 @@ button {
 }
 
 .section-header {
-  margin-bottom: 32px;
+  margin-bottom: clamp(20px, 4vw, 36px);
 }
 
 .section-title {
-  font-size: 2rem;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
   font-weight: 800;
   color: var(--color-primary);
   letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .section-subtitle {
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 2vw, 0.98rem);
   color: var(--color-text-muted);
   margin-top: 6px;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ===================================================================
-   HERO SECTION (SIMPLIFICADA)
+   HERO SECTION ADAPTATIVA
    =================================================================== */
 .hero-section {
   position: relative;
   background-image: url('assets/hero-nuts.webp');
   background-size: cover;
-  background-position: center;
-  padding: 76px 0 54px;
+  background-position: center 30%;
+  padding-top: clamp(48px, 8vw, 84px);
+  padding-bottom: clamp(38px, 6vw, 64px);
   color: #ffffff;
   text-align: center;
 }
@@ -457,29 +546,29 @@ button {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(30, 18, 10, 0.92) 0%, rgba(45, 26, 14, 0.86) 100%);
+  background: linear-gradient(135deg, rgba(28, 17, 9, 0.94) 0%, rgba(45, 26, 14, 0.88) 100%);
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
-  max-width: 760px;
-  margin: 0 auto;
+  max-width: 740px;
 }
 
 .hero-badges {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .hero-title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 7vw, 3.4rem);
   font-weight: 800;
   letter-spacing: -0.03em;
-  line-height: 1.15;
-  margin-bottom: 14px;
+  line-height: 1.12;
+  margin-bottom: 12px;
 }
 
 .hero-title em {
@@ -489,35 +578,44 @@ button {
 }
 
 .hero-description {
-  font-size: 1.08rem;
+  font-size: clamp(0.92rem, 2.5vw, 1.12rem);
   color: #faebd7;
-  max-width: 600px;
-  margin: 0 auto 28px;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: clamp(22px, 4vw, 32px);
   line-height: 1.5;
 }
 
 .hero-cta-group {
   display: flex;
-  justify-content: center;
-  gap: 14px;
-  margin-bottom: 34px;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: clamp(24px, 4vw, 36px);
+}
+
+.hero-cta-group .btn {
+  width: 100%;
 }
 
 .hero-quick-pills {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .quick-pill {
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(6px);
-  padding: 6px 14px;
+  padding: 6px 12px;
   border-radius: var(--radius-full);
-  font-size: 0.82rem;
+  font-size: clamp(0.74rem, 1.8vw, 0.82rem);
   color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .quick-pill strong {
@@ -525,25 +623,28 @@ button {
 }
 
 /* ===================================================================
-   CATEGORÍAS
+   CATEGORÍAS (CUADRÍCULA INTELIGENTE)
    =================================================================== */
 .categories-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(3, 1fr); /* 3 por fila en móvil compacto */
+  gap: 8px;
 }
 
 .category-card {
   background: #ffffff;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: 10px;
+  padding: 8px 6px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   transition: all var(--transition-fast);
 }
 
 .category-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   border-color: var(--color-accent);
   box-shadow: var(--shadow-sm);
 }
@@ -553,23 +654,30 @@ button {
   aspect-ratio: 1 / 1;
   border-radius: var(--radius-sm);
   overflow: hidden;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  background: var(--color-bg-alt);
 }
 
 .category-img-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.category-card:hover .category-img-wrap img {
+  transform: scale(1.06);
 }
 
 .category-card h3 {
-  font-size: 0.86rem;
+  font-size: clamp(0.74rem, 2vw, 0.88rem);
   font-weight: 700;
   color: var(--color-primary);
+  line-height: 1.2;
 }
 
 /* ===================================================================
-   CATÁLOGO DE PRODUCTOS
+   CATÁLOGO DE PRODUCTOS (GRID RESPONSIVE EXACTO)
    =================================================================== */
 .catalog-section {
   background: var(--color-bg-body);
@@ -577,30 +685,41 @@ button {
 
 .catalog-top-bar {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 20px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+/* Segmented Control / Switch de Modo */
+.pricing-mode-toggle {
+  width: 100%;
+  display: flex;
 }
 
 .toggle-pills {
-  display: inline-flex;
+  width: 100%;
+  display: flex;
   background: #ffffff;
-  padding: 4px;
+  padding: 3px;
   border-radius: var(--radius-full);
   border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-xs);
 }
 
 .pill-btn {
+  flex: 1;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 7px 15px;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px 6px;
   border-radius: var(--radius-full);
-  font-size: 0.84rem;
+  font-size: clamp(0.74rem, 2vw, 0.84rem);
   font-weight: 700;
   color: var(--color-text-muted);
   transition: all var(--transition-fast);
+  white-space: nowrap;
 }
 
 .pill-dot {
@@ -608,14 +727,15 @@ button {
   height: 6px;
   border-radius: var(--radius-full);
   background: #c5bbb0;
+  flex-shrink: 0;
 }
 
 .pill-discount {
   background: #fbf3e8;
   color: var(--color-accent);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 800;
-  padding: 2px 6px;
+  padding: 1px 5px;
   border-radius: var(--radius-full);
 }
 
@@ -633,14 +753,16 @@ button {
   color: #ffffff;
 }
 
-/* Filtros */
+/* Barra de Filtros Deslizable con Snap */
 .catalog-filter-bar {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   overflow-x: auto;
-  padding-bottom: 10px;
-  margin-bottom: 16px;
+  padding-bottom: 8px;
+  margin-bottom: 14px;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
 }
 
 .catalog-filter-bar::-webkit-scrollbar {
@@ -648,14 +770,16 @@ button {
 }
 
 .filter-tab {
-  padding: 7px 16px;
+  padding: 6px 14px;
   background: #ffffff;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-full);
-  font-size: 0.84rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--color-text-muted);
   white-space: nowrap;
+  flex-shrink: 0;
+  scroll-snap-align: start;
   transition: all var(--transition-fast);
 }
 
@@ -675,13 +799,13 @@ button {
   background: #ffffff;
   border: 1px solid #fed7aa;
   border-left: 4px solid var(--color-accent);
-  padding: 10px 16px;
+  padding: 8px 12px;
   border-radius: var(--radius-md);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.86rem;
+  gap: 8px;
+  font-size: clamp(0.78rem, 1.8vw, 0.86rem);
   color: var(--color-primary-dark);
 }
 
@@ -691,13 +815,14 @@ button {
   border-left-color: #16a34a;
 }
 
-/* Grilla de Productos */
+/* REGLAS DEL CATÁLOGO: CELULARES = 2 PRODUCTOS POR FILA */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr); /* 2 productos por fila en móvil */
+  gap: 10px;
 }
 
+/* Tarjeta de Producto */
 .product-card {
   background: #ffffff;
   border: 1px solid var(--color-border);
@@ -706,10 +831,11 @@ button {
   display: flex;
   flex-direction: column;
   transition: all var(--transition-fast);
+  position: relative;
 }
 
 .product-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-sm);
   border-color: #d1c5b8;
 }
@@ -717,7 +843,7 @@ button {
 .product-img-box {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1; /* Proporción uniforme y compacta */
   background: var(--color-bg-alt);
   overflow: hidden;
 }
@@ -726,141 +852,195 @@ button {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform var(--transition-normal);
+}
+
+.product-card:hover .product-img-box img {
+  transform: scale(1.05);
 }
 
 .product-badge-corner {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  background: rgba(30, 18, 10, 0.85);
+  top: 6px;
+  left: 6px;
+  background: rgba(30, 18, 10, 0.88);
   color: #fcd34d;
-  font-size: 0.7rem;
+  font-size: 0.62rem;
   font-weight: 800;
-  padding: 3px 8px;
+  padding: 2px 6px;
   border-radius: var(--radius-full);
+  letter-spacing: 0.02em;
 }
 
+/* Cuerpo de la tarjeta */
 .product-body {
-  padding: 16px;
+  padding: 10px 8px;
   display: flex;
   flex-direction: column;
   flex: 1;
+  justify-content: space-between;
 }
 
 .product-category-tag {
-  font-size: 0.72rem;
+  font-size: 0.66rem;
   font-weight: 700;
   text-transform: uppercase;
   color: var(--color-accent);
   margin-bottom: 2px;
+  display: block;
 }
 
 .product-name {
-  font-size: 1.08rem;
+  font-size: clamp(0.84rem, 2.3vw, 0.98rem);
   font-weight: 800;
   color: var(--color-primary);
-  margin-bottom: 12px;
+  line-height: 1.22;
+  margin-bottom: 8px;
+  min-height: 2.5em; /* Mantiene alineación uniforme en la fila */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
+/* Caja de Precios */
 .product-pricing-box {
   background: var(--color-bg-alt);
-  padding: 10px 12px;
+  padding: 6px 8px;
   border-radius: var(--radius-sm);
-  margin-bottom: 14px;
+  margin-bottom: 8px;
+  margin-top: auto;
 }
 
 .primary-price-line {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  gap: 4px;
 }
 
 .primary-price {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 3vw, 1.22rem);
   font-weight: 800;
   color: var(--color-primary-dark);
+  white-space: nowrap;
 }
 
 .price-unit {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   font-weight: 600;
   color: var(--color-text-muted);
+  white-space: nowrap;
 }
 
 .secondary-price-line {
-  font-size: 0.76rem;
+  font-size: 0.66rem;
   color: var(--color-text-muted);
-  margin-top: 3px;
+  margin-top: 2px;
   border-top: 1px dashed #d5cbc0;
-  padding-top: 3px;
+  padding-top: 2px;
+  line-height: 1.25;
 }
 
 .secondary-price-line strong {
   color: var(--color-accent);
 }
 
+/* Fila de Acciones en Móvil (Organizada verticalmente para fácil clic con el dedo) */
 .product-actions-row {
   display: flex;
-  gap: 8px;
-  align-items: center;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
 }
 
 .qty-control {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   background: var(--color-bg-alt);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  padding: 2px;
+  padding: 1px;
+  width: 100%;
+  height: 32px;
 }
 
 .qty-btn {
-  width: 28px;
-  height: 30px;
+  width: 32px;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
-  font-size: 1rem;
+  font-size: 1.05rem;
   color: var(--color-primary);
+  border-radius: var(--radius-xs);
+}
+
+.qty-btn:active {
+  background: #ffffff;
 }
 
 .qty-input {
-  width: 32px;
+  flex: 1;
   text-align: center;
   font-weight: 700;
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   border: none;
   background: transparent;
   outline: none;
 }
 
 .btn-add-cart {
-  flex: 1;
+  width: 100%;
   background: var(--color-primary);
   color: #ffffff;
   font-weight: 700;
-  font-size: 0.82rem;
-  padding: 9px 12px;
+  font-size: 0.78rem;
+  padding: 8px 10px;
   border-radius: var(--radius-sm);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 4px;
+  height: 34px;
   transition: all var(--transition-fast);
 }
 
-.btn-add-cart:hover {
+.btn-add-cart svg {
+  flex-shrink: 0;
+}
+
+.btn-add-cart:active {
   background: var(--color-accent);
 }
 
 /* Estado Vacío */
 .empty-state {
   text-align: center;
-  padding: 48px 20px;
+  padding: 36px 16px;
   background: #ffffff;
   border-radius: var(--radius-md);
   border: 1px dashed var(--color-border);
+  grid-column: 1 / -1;
+}
+
+.empty-icon {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.empty-state h3 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.empty-state p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
 }
 
 /* ===================================================================
@@ -872,25 +1052,31 @@ button {
 
 .wholesale-simple-box {
   background: linear-gradient(135deg, #2b180d 0%, #3e2415 100%);
-  border-radius: var(--radius-lg);
-  padding: 38px 40px;
+  border-radius: var(--radius-md);
+  padding: clamp(20px, 4vw, 36px) clamp(16px, 4vw, 36px);
   color: #ffffff;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  flex-direction: column;
+  text-align: center;
+  gap: 16px;
 }
 
 .wholesale-simple-text h2 {
-  font-size: 1.8rem;
+  font-size: clamp(1.35rem, 3.5vw, 1.8rem);
   font-weight: 800;
-  margin: 10px 0 6px;
+  margin: 8px 0 6px;
+  line-height: 1.2;
 }
 
 .wholesale-simple-text p {
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
   color: #faebd7;
   max-width: 580px;
+  margin: 0 auto;
+}
+
+.wholesale-simple-action .btn {
+  width: 100%;
 }
 
 /* ===================================================================
@@ -898,53 +1084,54 @@ button {
    =================================================================== */
 .shipping-simple-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: 1fr;
+  gap: 12px;
 }
 
 .shipping-simple-card {
   background: #ffffff;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: 24px;
+  padding: clamp(16px, 3vw, 24px);
   display: flex;
   align-items: flex-start;
-  gap: 16px;
+  gap: 12px;
 }
 
 .shipping-icon-mini {
-  font-size: 2rem;
+  font-size: clamp(1.6rem, 3.5vw, 2rem);
   flex-shrink: 0;
+  line-height: 1;
 }
 
 .shipping-simple-card h3 {
-  font-size: 1.15rem;
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
   font-weight: 800;
   color: var(--color-primary);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .shipping-simple-card p {
-  font-size: 0.88rem;
+  font-size: clamp(0.82rem, 2vw, 0.88rem);
   color: var(--color-text-muted);
   line-height: 1.45;
 }
 
 /* ===================================================================
-   FAQ (BREVE)
+   PREGUNTAS FRECUENTES (FAQ)
    =================================================================== */
 .faq-section {
   background: #ffffff;
 }
 
 .faq-container {
-  max-width: 760px;
+  max-width: 780px;
 }
 
 .accordion {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .faq-item {
@@ -959,15 +1146,16 @@ button {
 }
 
 .faq-question {
-  padding: 14px 18px;
+  padding: 12px 14px;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: clamp(0.86rem, 2vw, 0.95rem);
   color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
   list-style: none;
+  min-height: 44px;
 }
 
 .faq-question::-webkit-details-marker {
@@ -977,6 +1165,9 @@ button {
 .faq-chevron {
   font-size: 1.1rem;
   color: var(--color-accent);
+  transition: transform var(--transition-fast);
+  flex-shrink: 0;
+  margin-left: 8px;
 }
 
 .faq-item[open] .faq-chevron {
@@ -984,8 +1175,8 @@ button {
 }
 
 .faq-answer {
-  padding: 0 18px 16px;
-  font-size: 0.88rem;
+  padding: 0 14px 14px;
+  font-size: clamp(0.82rem, 1.8vw, 0.88rem);
   color: var(--color-text-muted);
   line-height: 1.5;
 }
@@ -1005,46 +1196,51 @@ button {
   background: #ffffff;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 40px 32px;
+  padding: clamp(24px, 5vw, 40px) clamp(16px, 4vw, 32px);
   text-align: center;
 }
 
 .contact-mini-card h2 {
-  font-size: 1.7rem;
+  font-size: clamp(1.3rem, 3.5vw, 1.7rem);
   font-weight: 800;
   color: var(--color-primary);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  line-height: 1.25;
 }
 
 .contact-mini-card p {
-  font-size: 0.95rem;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
   color: var(--color-text-muted);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .contact-mini-actions {
   display: flex;
-  justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-mini-actions .btn {
+  width: 100%;
 }
 
 /* ===================================================================
-   FOOTER (SIMPLE)
+   FOOTER COMPACTO
    =================================================================== */
 .site-footer {
   background: var(--color-primary-dark);
   color: #f7ecd7;
-  padding: 24px 0;
-  font-size: 0.85rem;
+  padding: 20px 0;
+  font-size: 0.82rem;
+  margin-top: auto;
 }
 
 .footer-bottom-inner {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
+  text-align: center;
+  gap: 10px;
 }
 
 .footer-simple-brand strong {
@@ -1053,8 +1249,10 @@ button {
 
 .footer-simple-links {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  gap: 18px;
+  gap: 12px clamp(12px, 3vw, 20px);
   color: #c9bea7;
 }
 
@@ -1068,24 +1266,24 @@ button {
 .cart-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(3px);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
   z-index: 1000;
 }
 
 .cart-drawer {
   position: fixed;
   top: 0;
-  right: -460px;
+  right: -100%;
   width: 100%;
-  max-width: 440px;
+  max-width: 100%;
   height: 100%;
   background: #ffffff;
   z-index: 1001;
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-lg);
-  transition: right 0.3s ease;
+  transition: right 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cart-drawer.open {
@@ -1093,7 +1291,7 @@ button {
 }
 
 .cart-drawer-header {
-  padding: 16px 20px;
+  padding: 14px 16px;
   border-bottom: 1px solid var(--color-border);
   display: flex;
   align-items: center;
@@ -1109,7 +1307,7 @@ button {
 }
 
 .cart-drawer-title h3 {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 800;
 }
 
@@ -1117,22 +1315,28 @@ button {
   font-size: 1.6rem;
   line-height: 1;
   color: var(--color-text-muted);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cart-drawer-body {
-  padding: 16px 20px;
+  padding: 14px 16px;
   flex: 1;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .cart-type-selector {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--color-border);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: var(--color-text-muted);
 }
@@ -1145,7 +1349,7 @@ button {
 }
 
 .btn-cart-type {
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 700;
   padding: 4px 10px;
   border-radius: var(--radius-full);
@@ -1160,79 +1364,111 @@ button {
 .cart-items-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .cart-item-card {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px;
+  gap: 8px;
+  padding: 8px;
   background: var(--color-bg-body);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
 }
 
 .cart-item-img {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: var(--radius-sm);
   object-fit: cover;
+  flex-shrink: 0;
 }
 
 .cart-item-details {
   flex: 1;
+  min-width: 0;
 }
 
 .cart-item-title {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--color-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .cart-item-price-desc {
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   color: var(--color-text-muted);
 }
 
 .cart-item-actions {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.cart-item-actions .qty-control {
+  width: auto;
+  height: 28px;
+}
+
+.cart-item-actions .qty-btn {
+  width: 26px;
+}
+
+.cart-item-actions .qty-input {
+  width: 24px;
 }
 
 .btn-remove-item {
   color: #dc2626;
   font-size: 1.1rem;
-  padding: 2px;
+  padding: 4px;
 }
 
 .cart-empty-state {
   text-align: center;
-  padding: 48px 20px;
+  padding: 40px 16px;
 }
 
 .cart-empty-state .empty-icon {
-  font-size: 2.6rem;
-  margin-bottom: 10px;
+  font-size: 2.4rem;
+  margin-bottom: 8px;
+}
+
+.cart-empty-state p {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.empty-hint {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  display: block;
+  margin-top: 4px;
 }
 
 .cart-drawer-footer {
-  padding: 16px 20px;
+  padding: 14px 16px;
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
   border-top: 1px solid var(--color-border);
   background: var(--color-bg-alt);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 
 .cart-delivery-option label,
 .cart-customer-input label {
   display: block;
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 700;
   color: var(--color-primary);
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 
 .cart-delivery-option select,
@@ -1242,7 +1478,7 @@ button {
   background: #ffffff;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   outline: none;
 }
 
@@ -1253,17 +1489,24 @@ button {
   padding-top: 4px;
 }
 
+.cart-summary-row span {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
 .cart-total-price {
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 900;
   color: var(--color-primary);
 }
 
 .btn-clear-cart {
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   color: var(--color-text-muted);
   text-align: center;
   text-decoration: underline;
+  padding: 4px;
 }
 
 /* ===================================================================
@@ -1271,126 +1514,425 @@ button {
    =================================================================== */
 .floating-whatsapp-btn {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 58px;
-  height: 58px;
+  bottom: 16px;
+  right: 16px;
+  width: 50px;
+  height: 50px;
   background: #25d366;
   color: #ffffff;
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 18px rgba(37, 211, 102, 0.4);
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
   z-index: 99;
   transition: transform var(--transition-fast);
 }
 
-.floating-whatsapp-btn:hover {
-  transform: scale(1.08);
+.floating-whatsapp-btn svg {
+  width: 26px;
+  height: 26px;
+}
+
+.floating-whatsapp-btn:active {
+  transform: scale(0.95);
 }
 
 .floating-tooltip {
-  position: absolute;
-  right: 68px;
-  background: #ffffff;
-  color: var(--color-primary-dark);
-  padding: 6px 12px;
-  border-radius: var(--radius-full);
-  font-size: 0.78rem;
-  font-weight: 700;
-  white-space: nowrap;
-  box-shadow: var(--shadow-sm);
-  pointer-events: none;
-  opacity: 0;
-  transform: translateX(8px);
-  transition: all var(--transition-fast);
-}
-
-.floating-whatsapp-btn:hover .floating-tooltip {
-  opacity: 1;
-  transform: translateX(0);
+  display: none; /* En móviles no mostramos tooltips flotantes */
 }
 
 /* Toast */
 .toast-container {
   position: fixed;
-  bottom: 24px;
+  bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2000;
   pointer-events: none;
+  width: 90%;
+  max-width: 360px;
 }
 
 .toast {
   background: var(--color-primary-dark);
   color: #ffffff;
-  padding: 10px 18px;
+  padding: 10px 16px;
   border-radius: var(--radius-full);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 700;
   box-shadow: var(--shadow-md);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   animation: toastIn 0.25s ease forwards;
 }
 
 @keyframes toastIn {
-  from { opacity: 0; transform: translateY(16px); }
+  from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 /* ===================================================================
-   RESPONSIVIDAD
+   ADAPTACIONES PROGRESSIVAS POR DISPOSITIVO (BREAKPOINTS BASADOS EN CONTENIDO)
    =================================================================== */
-@media (max-width: 1024px) {
-  .categories-grid {
-    grid-template-columns: repeat(3, 1fr);
+
+/* -------------------------------------------------------------
+   -1. DISPOSITIVOS ULTRA COMPACTOS (320px - 350px)
+   ------------------------------------------------------------- */
+@media (max-width: 350px) {
+  .container {
+    padding-left: 8px;
+    padding-right: 8px;
   }
   .products-grid {
-    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
   }
-  .wholesale-simple-box {
-    flex-direction: column;
-    text-align: center;
+  .product-body {
+    padding: 8px 6px;
+  }
+  .primary-price {
+    font-size: 0.95rem;
+  }
+  .brand-title {
+    font-size: 0.88rem;
+  }
+  .brand-subtitle {
+    font-size: 0.58rem;
   }
 }
 
-@media (max-width: 768px) {
-  .desktop-nav, .search-wrapper {
+/* -------------------------------------------------------------
+   0. MÓVILES (hasta 639px): Header inteligente de 2 filas
+   ------------------------------------------------------------- */
+@media (max-width: 639px) {
+  .header-container {
+    flex-wrap: wrap;
+    row-gap: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .brand-link {
+    order: 1;
+    max-width: calc(100% - 150px);
+  }
+  .header-actions {
+    order: 2;
+    margin-left: auto;
+  }
+  .search-wrapper {
+    order: 3;
+    width: 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .cart-label {
     display: none;
   }
-  .mobile-toggle-btn {
-    display: flex;
+  .btn-header-wa span {
+    display: none;
   }
-  .hero-title {
-    font-size: 2.2rem;
+  .btn-header-wa {
+    padding: 7px 10px;
+    min-width: 36px;
+    justify-content: center;
   }
-  .products-grid {
-    grid-template-columns: 1fr;
-  }
-  .shipping-simple-grid {
-    grid-template-columns: 1fr;
-  }
-  .catalog-top-bar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .footer-bottom-inner {
-    flex-direction: column;
-    text-align: center;
+  .cart-trigger-btn {
+    padding: 7px 9px;
   }
 }
 
-@media (max-width: 480px) {
-  .categories-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* -------------------------------------------------------------
+   1. TABLETS PEQUEÑAS / MÓVILES EN HORIZONTAL (480px - 599px)
+   ------------------------------------------------------------- */
+@media (min-width: 480px) {
   .hero-cta-group {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
   }
   .hero-cta-group .btn {
-    width: 100%;
+    width: auto;
+  }
+  .contact-mini-actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+  .contact-mini-actions .btn {
+    width: auto;
+  }
+}
+
+/* -------------------------------------------------------------
+   2. TABLETS PEQUEÑAS (600px - 767px): 2 o 3 productos por fila
+   ------------------------------------------------------------- */
+@media (min-width: 600px) {
+  /* Catálogo: 3 productos por fila */
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  /* Las acciones del producto en desktop: selector de cantidad compacto y botón 'Agregar' bien visible */
+  .product-actions-row {
+    flex-direction: row;
+    gap: 6px;
+    align-items: center;
+  }
+  .qty-control {
+    width: auto;
+    flex-shrink: 0;
+    height: 32px;
+    padding: 1px;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    display: inline-flex;
+    align-items: center;
+  }
+  .qty-btn {
+    width: 22px;
+    height: 100%;
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-xs);
+    transition: background var(--transition-fast);
+  }
+  .qty-btn:hover {
+    background: #ffffff;
+  }
+  .qty-input {
+    width: 24px;
+    height: 100%;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 0;
+  }
+  .btn-add-cart {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 32px;
+    padding: 0 10px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background: var(--color-primary);
+    color: #ffffff;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 1px 4px rgba(45, 28, 18, 0.12);
+    transition: all var(--transition-fast);
+  }
+  .btn-add-cart:hover {
+    background: var(--color-accent);
+    box-shadow: 0 2px 8px rgba(201, 115, 22, 0.28);
+    transform: translateY(-1px);
+  }
+
+  /* Categorías: 6 por fila */
+  .categories-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+  }
+
+  /* Switch y Top Bar del catálogo */
+  .catalog-top-bar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .pricing-mode-toggle {
+    width: auto;
+  }
+  .toggle-pills {
+    width: auto;
+  }
+
+  /* Banner mayorista */
+  .wholesale-simple-box {
+    flex-direction: row;
+    text-align: left;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .wholesale-simple-action .btn {
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  /* Logística */
+  .shipping-simple-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* Footer en una línea */
+  .footer-bottom-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  /* Drawer con ancho fijo */
+  .cart-drawer {
+    width: 400px;
+    max-width: 400px;
+    right: -420px;
+  }
+}
+
+/* -------------------------------------------------------------
+   3. TABLETS MEDIANAS Y GRANDES (768px - 1023px): 3 a 4 productos
+   ------------------------------------------------------------- */
+@media (min-width: 768px) {
+  /* Cabecera para Tablets: Navegación desktop visible */
+  .desktop-nav {
+    display: flex;
+    gap: 16px;
+  }
+  .mobile-toggle-btn {
+    display: none;
+  }
+  .search-wrapper {
+    max-width: 220px;
+  }
+
+  /* Catálogo: 3 productos amplios */
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  /* Botón flotante */
+  .floating-whatsapp-btn {
+    width: 56px;
+    height: 56px;
+    bottom: 22px;
+    right: 22px;
+  }
+  .floating-whatsapp-btn svg {
+    width: 30px;
+    height: 30px;
+  }
+  .floating-tooltip {
+    display: block;
+    position: absolute;
+    right: 66px;
+    background: #ffffff;
+    color: var(--color-primary-dark);
+    padding: 6px 12px;
+    border-radius: var(--radius-full);
+    font-size: 0.78rem;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: var(--shadow-sm);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(8px);
+    transition: all var(--transition-fast);
+  }
+  .floating-whatsapp-btn:hover .floating-tooltip {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Tablets grandes (900px - 1023px): 4 productos por fila */
+@media (min-width: 900px) {
+  .products-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .search-wrapper {
+    max-width: 260px;
+  }
+}
+
+/* -------------------------------------------------------------
+   4. NOTEBOOKS Y COMPUTADORAS (1024px - 1439px): 4 a 5 productos
+   ------------------------------------------------------------- */
+@media (min-width: 1024px) {
+  :root {
+    --container-max: 1260px;
+  }
+
+  .desktop-nav {
+    gap: 24px;
+  }
+  .desktop-nav .nav-item {
+    font-size: 0.92rem;
+  }
+  .search-wrapper {
+    max-width: 280px;
+  }
+
+  /* Catálogo en Notebooks */
+  .products-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .product-body {
+    padding: 14px 12px;
+  }
+  .product-name {
+    font-size: 1.05rem;
+  }
+
+  .cart-drawer {
+    width: 440px;
+    max-width: 440px;
+    right: -460px;
+  }
+}
+
+/* Notebooks amplias y Monitores (1280px - 1439px): 5 productos por fila */
+@media (min-width: 1280px) {
+  :root {
+    --container-max: 1360px;
+  }
+  .products-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+  }
+}
+
+/* -------------------------------------------------------------
+   5. COMPUTADORAS DE ESCRITORIO Y PANTALLAS GRANDES (1440px - 1799px)
+   ------------------------------------------------------------- */
+@media (min-width: 1440px) {
+  :root {
+    --container-max: 1440px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 22px;
+  }
+
+  .categories-grid {
+    gap: 18px;
+  }
+}
+
+/* -------------------------------------------------------------
+   6. PANTALLAS ULTRA-WIDE / 2K / 4K (1800px - 2560px): hasta 6 productos
+   ------------------------------------------------------------- */
+@media (min-width: 1800px) {
+  :root {
+    --container-max: 1600px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 22px;
   }
 }
