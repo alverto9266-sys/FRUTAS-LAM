@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frutos Secos LAM · Mayorista y Minorista · Mendoza</title>
+  <meta name="description" content="Distribución de frutos secos de primera calidad al por mayor y menor. Nueces, almendras, castañas, mixes y más. Envíos a todo el país y retiro en Mendoza.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Frutos Secos LAM · Mayorista y Minorista">
+  <meta property="og:description" content="Nueces, almendras, castañas, mixes y más a precios directos. Entregas en Mendoza y envíos a todo el país.">
+  <meta property="og:image" content="assets/logo-lam.png">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo-lam.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==================== HEADER & NAVBAR ==================== -->
+  <header class="site-header" id="header">
+    <div class="header-container">
+      
+      <!-- Logo y Marca -->
+      <a href="#inicio" class="brand-link" aria-label="Frutos Secos LAM Inicio">
+        <img src="assets/logo-lam.png" alt="Logo Frutos Secos LAM" class="brand-logo" id="mainBrandLogo">
+        <div class="brand-text">
+          <span class="brand-title">FRUTOS SECOS <strong>LAM</strong></span>
+          <span class="brand-subtitle">Mayorista & Minorista</span>
+        </div>
+      </a>
+
+      <!-- Buscador rápido integrado -->
+      <div class="search-wrapper">
+        <label for="productSearchInput" class="sr-only">Buscar frutos secos</label>
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="search" id="productSearchInput" placeholder="Buscar producto..." autocomplete="off">
+        <button type="button" id="clearSearchBtn" class="clear-search-btn" aria-label="Limpiar búsqueda" style="display: none;">&times;</button>
+      </div>
+
+      <!-- Navegación de escritorio -->
+      <nav class="desktop-nav" aria-label="Navegación principal">
+        <a href="#inicio" class="nav-item active">Inicio</a>
+        <a href="#catalogo" class="nav-item">Catálogo</a>
+        <a href="#mayoristas" class="nav-item">Mayoristas</a>
+        <a href="#envios" class="nav-item">Envíos</a>
+        <a href="#contacto" class="nav-item">Contacto</a>
+      </nav>
+
+      <!-- Acciones de Cabecera -->
+      <div class="header-actions">
+        <!-- Botón Cotizador / Pedido -->
+        <button type="button" class="cart-trigger-btn" id="openCartBtn" aria-label="Ver pedido">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span class="cart-label">Mi Pedido</span>
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
+
+        <!-- Botón WhatsApp Directo -->
+        <a href="https://wa.me/5492634761151?text=Hola%20Frutos%20Secos%20LAM,%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener noreferrer" class="btn-header-wa" aria-label="Contactar por WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          <span>WhatsApp</span>
+        </a>
+
+        <!-- Botón Menú Mobile -->
+        <button type="button" class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Menú Desplegable Mobile -->
+    <div class="mobile-nav-panel" id="mobileNavPanel">
+      <a href="#inicio" class="mobile-nav-link">Inicio</a>
+      <a href="#catalogo" class="mobile-nav-link">Catálogo de Productos</a>
+      <a href="#mayoristas" class="mobile-nav-link">Precios Mayoristas</a>
+      <a href="#envios" class="mobile-nav-link">Envíos a todo el país</a>
+      <a href="#contacto" class="mobile-nav-link">Ubicación y Contacto</a>
+      <div class="mobile-nav-footer">
+        <a href="https://wa.me/5492634761151?text=Hola%20Frutos%20Secos%20LAM,%20quisiera%20consultar%20por%20precios" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">
+          Escribir por WhatsApp
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION (MINIMALISTA) ==================== -->
+  <section class="hero-section" id="inicio">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      
+      <div class="hero-badges">
+        <span class="badge badge-accent">Ventas Mayoristas y Minoristas</span>
+        <span class="badge badge-white">Mendoza · Envíos a todo el país</span>
+      </div>
+
+      <h1 class="hero-title">
+        Frutos Secos <em>LAM</em>
+      </h1>
+
+      <p class="hero-description">
+        Nueces, almendras, castañas, mixes y pasas de primera calidad. Precios directos por kilo fraccionado y descuentos por caja cerrada.
+      </p>
+
+      <!-- Botones de Acción Principal -->
+      <div class="hero-cta-group">
+        <a href="#catalogo" class="btn btn-accent btn-lg">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          Ver Catálogo y Precios
+        </a>
+        <a href="https://wa.me/5492634761151?text=Hola%20Frutos%20Secos%20LAM,%20quiero%20solicitar%20la%20lista%20de%20precios%20mayorista" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light btn-lg">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Pedir Lista Mayorista
+        </a>
+      </div>
+
+      <!-- Barra de Confianza Rápida (Sin textos largos) -->
+      <div class="hero-quick-pills">
+        <span class="quick-pill">📍 <strong>Mendoza:</strong> 9 de Julio 1189</span>
+        <span class="quick-pill">🚚 <strong>Envíos:</strong> A todo el país</span>
+        <span class="quick-pill">📦 <strong>Ventas:</strong> Por kilo y bulto cerrado</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== CATEGORÍAS ==================== -->
+  <section class="section categories-section" id="categorias">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2 class="section-title">Categorías</h2>
+        <p class="section-subtitle">Elegí una categoría para explorar los productos</p>
+      </div>
+
+      <div class="categories-grid">
+        
+        <button type="button" class="category-card" data-category="Nueces">
+          <div class="category-img-wrap">
+            <img src="assets/nueces.jpg" alt="Nueces" loading="lazy">
+          </div>
+          <h3>Nueces</h3>
+        </button>
+
+        <button type="button" class="category-card" data-category="Almendras">
+          <div class="category-img-wrap">
+            <img src="assets/almendras.jpg" alt="Almendras" loading="lazy">
+          </div>
+          <h3>Almendras</h3>
+        </button>
+
+        <button type="button" class="category-card" data-category="Castañas & Pistachos">
+          <div class="category-img-wrap">
+            <img src="assets/castanas-caju.jpg" alt="Castañas y pistachos" loading="lazy">
+          </div>
+          <h3>Cajú & Pistachos</h3>
+        </button>
+
+        <button type="button" class="category-card" data-category="Mixes">
+          <div class="category-img-wrap">
+            <img src="assets/mix-frutos.jpg" alt="Mixes" loading="lazy">
+          </div>
+          <h3>Mixes</h3>
+        </button>
+
+        <button type="button" class="category-card" data-category="Frutas Desecadas">
+          <div class="category-img-wrap">
+            <img src="assets/pasas-uva.jpg" alt="Pasas y frutas secas" loading="lazy">
+          </div>
+          <h3>Frutas Desecadas</h3>
+        </button>
+
+        <button type="button" class="category-card" data-category="Maní & Semillas">
+          <div class="category-img-wrap">
+            <img src="assets/mani.jpg" alt="Maní y semillas" loading="lazy">
+          </div>
+          <h3>Maní & Semillas</h3>
+        </button>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CATÁLOGO INTERACTIVO ==================== -->
+  <section class="section catalog-section" id="catalogo">
+    <div class="container">
+      
+      <div class="catalog-top-bar">
+        <div>
+          <h2 class="section-title">Catálogo</h2>
+          <p class="section-subtitle">Precios actualizados para compras minoristas y mayoristas</p>
+        </div>
+
+        <!-- Switch de Tarifa: Minorista vs Mayorista -->
+        <div class="pricing-mode-toggle" role="group" aria-label="Tipo de precio">
+          <div class="toggle-pills">
+            <button type="button" class="pill-btn active" id="btnModeMinorista">
+              <span class="pill-dot"></span>
+              Minorista (x Kg)
+            </button>
+            <button type="button" class="pill-btn" id="btnModeMayorista">
+              <span class="pill-dot"></span>
+              Mayorista (Caja / Bulto)
+              <span class="pill-discount">-15%</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de Filtros por Categoría -->
+      <div class="catalog-filter-bar">
+        <button type="button" class="filter-tab active" data-filter="all">Todos</button>
+        <button type="button" class="filter-tab" data-filter="Nueces">Nueces</button>
+        <button type="button" class="filter-tab" data-filter="Almendras">Almendras</button>
+        <button type="button" class="filter-tab" data-filter="Castañas & Pistachos">Castañas & Pistachos</button>
+        <button type="button" class="filter-tab" data-filter="Mixes">Mixes</button>
+        <button type="button" class="filter-tab" data-filter="Frutas Desecadas">Frutas Desecadas</button>
+        <button type="button" class="filter-tab" data-filter="Maní & Semillas">Maní & Semillas</button>
+      </div>
+
+      <!-- Alerta dinámica de modo mayorista -->
+      <div class="mode-info-banner" id="modeInfoBanner">
+        <span class="banner-icon">💡</span>
+        <span id="modeInfoText">Mostrando precios minoristas por kilo. Hacé clic en <strong>Mayorista</strong> para ver precios por caja cerrada.</span>
+      </div>
+
+      <!-- Grilla de Productos -->
+      <div class="products-grid" id="productsGrid">
+        <!-- Renderizado dinámico vía app.js -->
+      </div>
+
+      <!-- Mensaje cuando no hay resultados de búsqueda -->
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <span class="empty-icon">🔍</span>
+        <h3>No encontramos ese producto</h3>
+        <p>Probá con otro nombre o restablecé los filtros.</p>
+        <button type="button" class="btn btn-primary" id="resetFiltersBtn">Ver todos</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== BANNER MAYORISTA SIMPLE ==================== -->
+  <section class="section wholesale-simple-section" id="mayoristas">
+    <div class="container">
+      <div class="wholesale-simple-box">
+        <div class="wholesale-simple-text">
+          <span class="badge badge-accent">Venta por Mayor</span>
+          <h2>¿Tenés dietética, local o repostería?</h2>
+          <p>Vendemos cajas cerradas de 5, 10 y 25 kg a precios directos. Te enviamos la lista mayorista completa por WhatsApp.</p>
+        </div>
+        <div class="wholesale-simple-action">
+          <a href="https://wa.me/5492634761151?text=Hola%20Frutos%20Secos%20LAM,%20quisiera%20recibir%20la%20lista%20de%20precios%20mayorista" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-lg">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Pedir Lista Mayorista PDF
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LOGÍSTICA & ENTREGAS ==================== -->
+  <section class="section shipping-section" id="envios">
+    <div class="container">
+      
+      <div class="section-header text-center">
+        <h2 class="section-title">Envíos y Retiros</h2>
+      </div>
+
+      <div class="shipping-simple-grid">
+        
+        <div class="shipping-simple-card">
+          <div class="shipping-icon-mini">📍</div>
+          <div>
+            <h3>Retiro en Mendoza Ciudad</h3>
+            <p><strong>9 de Julio 1189, Mendoza</strong><br>Coordinamos día y horario previamente por WhatsApp.</p>
+          </div>
+        </div>
+
+        <div class="shipping-simple-card">
+          <div class="shipping-icon-mini">🚚</div>
+          <div>
+            <h3>Envíos a Todo el País</h3>
+            <p>Despachamos por <strong>expresos y transportes</strong> a cualquier provincia con embalaje reforzado.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== PREGUNTAS FRECUENTES (BREVE) ==================== -->
+  <section class="section faq-section">
+    <div class="container faq-container">
+      <div class="section-header text-center">
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+      </div>
+
+      <div class="accordion">
+        <details class="faq-item" open>
+          <summary class="faq-question">
+            <span>¿Puedo comprar tanto por kilo como por caja cerrada?</span>
+            <span class="faq-chevron">▾</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Sí, vendemos de forma minorista (a partir de 1 kg) y de forma mayorista con precios diferenciales en cajas cerradas de 5, 10 o bolsas de 25 kg.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>¿Cómo se envían los pedidos al interior del país?</span>
+            <span class="faq-chevron">▾</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Coordinamos el despacho por la empresa de encomienda o transporte que te resulte más conveniente (Vía Cargo, expresos de carga, etc.) y te enviamos la guía de seguimiento.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <span>¿Qué medios de pago aceptan?</span>
+            <span class="faq-chevron">▾</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Transferencia bancaria (Alias/CBU), efectivo al momento de retirar en Mendoza y Mercado Pago.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACTO DIRECTO ==================== -->
+  <section class="section contact-section" id="contacto">
+    <div class="container contact-mini-container">
+      
+      <div class="contact-mini-card">
+        <h2>¿Tenés una consulta o querés hacer un pedido?</h2>
+        <p>Escribinos directamente al WhatsApp <strong>+54 9 263 476-1151</strong> o por Instagram y te respondemos en el momento.</p>
+        
+        <div class="contact-mini-actions">
+          <a href="https://wa.me/5492634761151?text=Hola%20Frutos%20Secos%20LAM,%20quisiera%20hacer%20una%20consulta" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-lg">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp: 263 476-1151
+          </a>
+          <a href="https://www.instagram.com/frutossecoslam/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark btn-lg">
+            Instagram: @frutossecoslam
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="container footer-bottom-inner">
+      <div class="footer-simple-brand">
+        <strong>FRUTOS SECOS LAM</strong> · Mendoza, Argentina
+      </div>
+      <div class="footer-simple-links">
+        <a href="https://wa.me/5492634761151" target="_blank" rel="noopener noreferrer">💬 263 476-1151</a>
+        <span>📍 9 de Julio 1189</span>
+        <span>🚚 Envíos a todo el país</span>
+        <a href="https://www.instagram.com/frutossecoslam/" target="_blank" rel="noopener noreferrer">@frutossecoslam</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODAL / DRAWER DEL COTIZADOR Y PEDIDO ==================== -->
+  <div class="cart-backdrop" id="cartBackdrop" style="display: none;"></div>
+  
+  <div class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    
+    <div class="cart-drawer-header">
+      <div class="cart-drawer-title">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <h3>Tu Pedido</h3>
+      </div>
+      <button type="button" class="close-cart-btn" id="closeCartBtn" aria-label="Cerrar pedido">&times;</button>
+    </div>
+
+    <div class="cart-drawer-body">
+      
+      <!-- Selector de Tipo de Pedido dentro del Carrito -->
+      <div class="cart-type-selector">
+        <span>Modalidad:</span>
+        <div class="cart-type-buttons">
+          <button type="button" class="btn-cart-type active" id="cartTypeMinorista">Minorista</button>
+          <button type="button" class="btn-cart-type" id="cartTypeMayorista">Mayorista</button>
+        </div>
+      </div>
+
+      <!-- Lista de Productos en el Carrito -->
+      <div class="cart-items-container" id="cartItemsContainer">
+        <!-- Generado dinámicamente -->
+      </div>
+
+      <!-- Mensaje Carrito Vacío -->
+      <div class="cart-empty-state" id="cartEmptyState">
+        <span class="empty-icon">🛒</span>
+        <p>Tu pedido está vacío.</p>
+        <span class="empty-hint">Agregá productos desde el catálogo con el botón "+ Agregar".</span>
+      </div>
+
+    </div>
+
+    <div class="cart-drawer-footer" id="cartDrawerFooter" style="display: none;">
+      
+      <!-- Opciones de Entrega -->
+      <div class="cart-delivery-option">
+        <label for="cartDeliverySelect">Forma de entrega:</label>
+        <select id="cartDeliverySelect">
+          <option value="Retiro en Mendoza (9 de Julio 1189)">📍 Retiro en Mendoza (9 de Julio 1189)</option>
+          <option value="Envío en Gran Mendoza">🛵 Envío en Gran Mendoza</option>
+          <option value="Envío a otra provincia (Expreso / Transporte)">🚚 Envío al interior (Expreso / Transporte)</option>
+        </select>
+      </div>
+
+      <!-- Campo Nombre del Cliente -->
+      <div class="cart-customer-input">
+        <label for="cartCustomerName">Tu Nombre o Comercio:</label>
+        <input type="text" id="cartCustomerName" placeholder="Ej: Juan Pérez / Dietética Centro">
+      </div>
+
+      <!-- Resumen de Totales -->
+      <div class="cart-summary-row">
+        <span>Total estimado:</span>
+        <strong class="cart-total-price" id="cartTotalPrice">$0</strong>
+      </div>
+
+      <!-- Botón Enviar a WhatsApp -->
+      <button type="button" class="btn btn-accent btn-block btn-lg" id="btnSendWhatsAppOrder">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Enviar Pedido por WhatsApp
+      </button>
+
+      <button type="button" class="btn-clear-cart" id="btnClearCart">Vaciar pedido</button>
+    </div>
+
+  </div>
+
+  <!-- ==================== BOTÓN FLOTANTE DE WHATSAPP ==================== -->
+  <a href="https://wa.me/5492634761151?text=Hola%20Frutos%20Secos%20LAM,%20quisiera%20hacer%20una%20consulta" target="_blank" rel="noopener noreferrer" class="floating-whatsapp-btn" aria-label="Escribinos por WhatsApp">
+    <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <span class="floating-tooltip">¿Dudas o pedidos? ¡Escribinos!</span>
+  </a>
+
+  <!-- Toast de Notificaciones -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
